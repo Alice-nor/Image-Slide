@@ -1,0 +1,200 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f6e0cb;
+    position: relative;
+}
+
+h1 {
+    position: absolute;
+    font-size: 4.5vw;
+    font-family: Georgia;
+    top: 0px;
+    bottom: 0;
+    right: 100px;
+    /* left: -220px; */
+    transform: rotate(90deg);
+}
+
+h1::before {
+    content: 'You don\'t know if it\'s in the real world or in the dreams...';
+    position: absolute;
+    font-size: 1.5vw;
+    /* transform: rotate(-90deg); */
+    top: 70px;
+    right: 0px;
+    /* writing-mode: vertical-lr; */
+    font-family: serif;
+    font-style: italic;
+}
+
+p {
+    position: absolute;
+    display: flex;
+    font-size: 3vw;
+    margin-right: 400px;
+    padding: 0px 30px;
+    top: 0px;
+    left: 30px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.4);
+    z-index: -2;
+    line-height: 1.3;
+}
+
+.slider {
+    width: 800px;
+    height: 533px;
+    overflow: hidden;
+}
+
+.slides {
+    width: 500%;
+    height: 533px;
+    display: flex;
+}
+
+.slides input {
+    display: none;
+}
+
+.slide {
+    /* 這邊的width其實好像沒什麼作用 */
+    /* 但在後面要幻燈片時就會有作用了 */
+    /* 像是-20%就會換另一張圖 */
+    width: 20%;
+    /* 圖片會緩慢移動！ */
+    transition: 2s;
+    /* border: 2px solid red; */
+}
+
+.slide img {
+    /* 如果我這邊width用100%會看見一點第二張圖 */
+    /* 這是因為其實框比較小？所以要給他超過框 */
+    width: 800px;
+    height: 533px;
+    border-radius: 10px;
+    /* border: 2px solid red; */
+}
+
+
+/* 手動導引的部分 */
+
+.nav-manual {
+    position: absolute;
+    /* border: 2px solid red; */
+    width: 800px;
+    margin-top: -50px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn {
+    border: 3px solid #f6e0cb;
+    padding: 5px;
+    border-radius: 10px;
+    /* 把滑鼠指標變成可以觸碰的樣子 */
+    cursor: pointer;
+    transition: .5s
+}
+
+
+/* 除了最後一個元素以外，其他元素右邊要有40px空格 */
+
+.manual-btn:not(:last-child) {
+    margin-right: 40px;
+}
+
+.manual-btn:hover {
+    background-color: #f6e0cb;
+}
+
+
+/* 若按鈕1被選取到，第一張圖是最靠左的 */
+
+#radio1:checked~.first {
+    margin-left: 0;
+}
+
+
+/* 若按鈕2被選取到，第二張圖是往前20%被看見 */
+
+#radio2:checked~.first {
+    margin-left: -20%;
+}
+
+
+/* 若按鈕3被選取到，第三張圖是往前40%被看見 */
+
+#radio3:checked~.first {
+    margin-left: -40%;
+}
+
+
+/* 若按鈕4被選取到，第四張圖是往前60%被看見 */
+
+#radio4:checked~.first {
+    margin-left: -60%;
+}
+
+
+/* 若按鈕5被選取到，第五張圖是往前80%被看見 */
+
+#radio5:checked~.first {
+    margin-left: -80%;
+}
+
+
+/* 自動導引的部分 */
+
+.nav-auto {
+    position: absolute;
+    display: flex;
+    width: 800px;
+    justify-content: center;
+    margin-top: 483px;
+}
+
+.nav-auto div {
+    border: 3px solid #f6e0cb;
+    padding: 5px;
+    border-radius: 10px;
+    transition: .5s
+}
+
+
+/* 除了最後一個元素以外，其他元素右邊要有40px空格 */
+
+
+/* 這樣手動引導與自動的部分就重疊了 */
+
+.nav-auto div:not(:last-child) {
+    margin-right: 40px;
+}
+
+
+/* 若自動被點選到，則按鈕保持背景色 */
+
+#radio1:checked~.nav-auto .auto-btn1 {
+    background-color: #f6e0cb;
+}
+
+#radio2:checked~.nav-auto .auto-btn2 {
+    background-color: #f6e0cb;
+}
+
+#radio3:checked~.nav-auto .auto-btn3 {
+    background-color: #f6e0cb;
+}
+
+#radio4:checked~.nav-auto .auto-btn4 {
+    background-color: #f6e0cb;
+}
+
+#radio5:checked~.nav-auto .auto-btn5 {
+    background-color: #f6e0cb;
+}
