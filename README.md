@@ -8,4 +8,4 @@
  
  **展示結果** （注意：以我的電腦展示為主，RWD還未做，若開啟有跑版是正常現象.....。）
  
- ![image](https://github.com/Alice-nor/Image-Slide/blob/main/repoImage.png)
+ ![image](https://github.com/Alice-nor/Image-Slide/blob/main/repoImage.jpg)
