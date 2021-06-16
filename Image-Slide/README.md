@@ -3,9 +3,9 @@
  
  效果：照片會自動幾秒後變更一張，最後一張輪完會回到第一張，也可手動更改想看的圖片。
  
- 網址：https://alice-nor.github.io/Image-Slide/slide.html
+ 網址：https://alice-nor.github.io/front-endPratice/Image-Slide/slide.html
  
  
  **展示結果** 
  
- ![image](https://github.com/Alice-nor/Image-Slide/blob/main/repoImage.jpg)
+ ![image](https://github.com/Alice-nor/front-endPratice/blob/main/Image-Slide/repoImage.jpg)
