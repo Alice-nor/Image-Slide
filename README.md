@@ -14,3 +14,8 @@
 3、**preloader** 使用 HTML、CSS、JavaScript 做出進入網頁時，會有一個 icon 轉圈的載入畫面。
 
 網址：https://alice-nor.github.io/front-endPratice/preloader/preloader.html
+
+
+3、**plantATree** 主要使用 Animate.css 去練習 CSS 的 animate 效果。
+
+網址：https://alice-nor.github.io/front-endPratice/plantATree/animate.html
