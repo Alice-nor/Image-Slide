@@ -71,7 +71,6 @@ layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他�
         else 
             a(href='./logout') 登出
             , Welcome to #{title}
-    p 未斷線（登出）情況，已 #{time} 次登入！
 ```
 
 ## Step7
@@ -118,7 +117,7 @@ layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他�
     });
 ```
 
-#### 重要的知識點
+#### Step7 重要的知識點
 
 1. [在 Express 中使用範本引擎](https://expressjs.com/zh-tw/guide/using-template-engines.html) 
 
@@ -140,7 +139,7 @@ layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他�
 
 2. [為何使用 body-parse](https://ithelp.ithome.com.tw/articles/10220836)
 
-> 提到 RESTful 幾個 Method，有些像是 POST、PATCH，是需要在 Request 時，一併送出 body 當作參數給 Server，並且可以在 headers，去設定 content-type 參數的類型....  
+> 提到 RESTful 幾個 Method，有些像是 POST、PATCH，是需要在 Request 時，一併送出 body 當作參數給 Server，並且可以在 headers，去設定 content-type 參數的類型....
 > 而 node 有許多這類型去解析 body 的套件，像是今天提到的 body-parser，透過這個插件可以解析 JSON、Raw、text、XML、URL-encoded 格式的請求。使用方法如下：先安裝 body-parser，並把程式碼加入到 .js 檔案中。
 
 ```
@@ -244,7 +243,7 @@ layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他�
     module.exports = loginAPI;
 ```
 
-#### 重要的知識點
+#### Step8 重要的知識點
 
 1. [res.render](https://expressjs.com/zh-tw/4x/api.html#res.render) 
 
@@ -288,6 +287,164 @@ layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他�
     res.redirect('/admin');
 ```
 
-## 步驟與導向解析
+## 步驟與導向解析統整
 
-想釐清檔案與檔案間的步驟與順序，以及到底是怎麼導向與互相影響，把步驟寫在這邊。
+想釐清檔案與檔案間的步驟與順序，以及到底是怎麼導向與互相影響，因此把大步驟寫在這邊。
+
+1. 執行主要檔案。
+
+```JavaScript
+    node index.js // 終端機執行主要檔案
+```
+```JavaScript
+    // index.js 已設置好樣板要找 views 資料夾內的 jade 檔案。
+    app.set('view engine', 'jade');
+    app.set('views', __dirname + '/views');
+
+    // 靜態檔案則要找 public 資料夾內的檔案。
+    app.use(express.static(__dirname + '/public'));
+
+    // 路由都交給 routerCookie 負責，路徑是 /cookie
+    // 因此輸入網址時是： localhost:5000/cookie
+    // 接著後續的導向都跟 routerCookie 相關
+    // 畫面呈現都跟 html 與 jade 檔有關
+    let routerCookie = require('./routes/loginAPI');
+    app.use('/cookie', routerCookie);
+```
+
+2. 執行 loginAPI.api
+
+![image](https://github.com/Alice-nor/front-endPratice/blob/main/Image-Slide/repoImage.jpg)
+
+ 輸入網址後，此時的畫面如上圖。來理解一下為何是這樣畫面。  
+ 步驟 1 路由 /cookie 導向 routerCookie，  
+ 而 routerCookie 是 loginAPI.js 這個檔案，  
+ 接著來看看 loginAPI.js。  
+
+ ```JavaScript
+    // 網址 localhost:5000/cookie
+    // 這邊的 loginAPI.get('/'......
+    // 讓輸入網址 localhost:5000/cookie 時會導向 localhost:5000/cookie/
+    // 但輸入 localhost:5000/cookie 也是可以的
+    // 因此一開始的畫面是 get 的方法呈現
+    // 那麼接著看 get 的方法
+    loginAPI.get('/', function(req, res) {
+    // .... 程式碼
+    });
+```
+
+
+ ```JavaScript
+    // 以下是在 loginAPI.get 的方法裡
+    // 通常進入一個網站會是登出的狀態，因此設定 isLogin 為 false
+    // 若是為登出的狀態會執行以下程式碼（已登入狀態下面會提到）
+
+    // 因為在 index.js 已設定過樣板會去 views 裡找
+    // 所以這邊的 index 代表 views 資料夾內的 index.jade 檔案
+    // 大括弧內的內容為要傳遞過去的資料（呼應 index.jade 裡的資料）
+    // 那麼接著看 index.jade
+    res.render('index', { title: 'Express', member: name, logstatus: isLogin });
+```
+
+title、member、logstatus 都帶進 index.jade 裡。 
+因 logstatus 為 false 未登入的狀態，  
+所以印出 Hello guest 登入, Welcome to Express。
+
+
+3. 按下登入的連結
+
+![image](https://github.com/Alice-nor/front-endPratice/blob/main/Image-Slide/repoImage.jpg)
+
+按下登入的連結後，此時的畫面如上圖。這是為什麼呢？  
+我們先看回到 index.jade，登入的畫面會連結到 login.html。  
+
+```jade
+    a(href='login.html') 登入
+```
+
+所以這邊會出現 html 的畫面很好理解。  
+注意網址變成了 localhost:5000/cookie/login.html。  
+
+4. 填完資料，按下送出
+
+![image](https://github.com/Alice-nor/front-endPratice/blob/main/Image-Slide/repoImage.jpg)
+
+![image](https://github.com/Alice-nor/front-endPratice/blob/main/Image-Slide/repoImage.jpg)
+
+填完資料並按下送出後，此時的畫面會如上圖。  
+我們回到 login.html 的表單上。  
+
+```html
+    <!--
+        注意到這邊的 action 為 /cookie/post，method 為 post。
+        填表格時的頁面網址為 localhost:5000/cookie/login.html，
+        資料都填完後按下送出後，路由為 /cookie/post，
+        因此網址導向 localhost:5000/cookie/post，
+    -->
+    <form action="/cookie/post" method="post">
+        <!-- 程式碼.... -->
+    </form>
+```
+```JavaScript
+    /* 
+    接著再看到 loginAPI.js，
+    我們有設定好 loginAPI.post('/post'....，
+    所以 localhost:5000/cookie/post 的呈現方式是依照 post 內的方法
+    */
+    loginAPI.post('/post', function(req, res) {
+        // 程式碼...
+    });
+
+
+
+    // 以下是在 loginAPI.post 的方法裡
+    // 若有一個欄位沒有填資料，就會跳回到 login.html 讓你填表格
+    if (req.body.firstname == '' || req.body.lastname == '') {
+        return res.redirect('login.html');
+    }
+
+    // 而如果我們早已乖乖的填完了資料
+    // 用 respose cookie 設定 firstname 與 lastname 內容
+    // 並導向 /cookie，也就是 localhost:5000/cookie
+    // 接著再回到 loginAPI.get.....
+    // 這時就有了 cookie 的資料了！因此會是登入的狀態，
+    // 並再把畫面導向 index.jade。
+
+    // 看向 index.jade， logstatus 是 true 的登入狀態
+    // 所以換呈現下面這一行程式碼。
+    a(href='./logout') 登出
+```
+
+一樣的 title、member、logstatus 都帶進 index.jade 裡。  
+因 logstatus 為 true 未登入的狀態，  
+所以印出 Hello 名稱 登出, Welcome to Express
+
+5. 登出
+
+![image](https://github.com/Alice-nor/front-endPratice/blob/main/Image-Slide/repoImage.jpg)
+
+按下登出鍵後，又回到了上面的這個畫面。  
+這是因為 index.jade 裡的登出是連接到 ./logout。  
+我們再回到 loginAPI.js 看 ./logout 路由會導向哪。
+
+```JavaScript
+    // 處理路由的 loginAPI.js 裡確實有處理 ./logout
+    // 要注意他的位置，在 index.jade 的路由是 ./logout
+    // 在 loginAPI.js 則是 /logout
+    // 接著看登出時怎麼處理
+    loginAPI.get('./logout', function(req, res) {
+        // 程式碼...
+    });
+
+
+        // 以下是在 loginAPI.get('/logout...的方法裡
+        // 把 cookie 都移除掉之後，導向 /cookie
+        // 又回到了 loginAPI.get.....
+        // 因為 cookie 都被我們移除了，所以又回到了登出狀態
+        // 並把畫面導向 index.jade
+        // 如此這般就又回到步驟 1 了！
+        res.clearCookie('firstname', { path: '/cookie' });
+        res.clearCookie('lastname', { path: '/cookie' });
+        return res.redirect('/cookie');
+
+```
