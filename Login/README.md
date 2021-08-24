@@ -1,5 +1,6 @@
 # Login
- 使用 express 去做 cookie 的應用。以登入實作為例。參考文章：[Day24 - Cookie在express上的應用—登入實作為例。](https://ithelp.ithome.com.tw/articles/10187343) 
+ 使用 express 去做 cookie 的應用。以登入實作為例。  
+ 參考文章：[Day24 - Cookie在express上的應用—登入實作為例。](https://ithelp.ithome.com.tw/articles/10187343) 
 
 ## Step1
 從無到有建立專案資料夾，初始化此資料夾。
@@ -20,23 +21,30 @@
 ```
 
 ## Step3
-在 login 資料夾內創建 public 資料夾，並在 public 再創建 cookie 資料夾。在 cookie 資料夾內放入 login.html 靜態網頁。（public 資料夾通常會包含 css、 JavaScript，以及一些 html 的樣板。）
+在 login 資料夾內創建 public 資料夾，並在 public 再創建 cookie 資料夾。  
+在 cookie 資料夾內放入 login.html 靜態網頁。  
+（public 資料夾通常會包含 css、 JavaScript，以及一些 html 的樣板。）
 
 ## Step4
-在 login 資料夾內創建 views 資料夾，並在 views 資料夾內放入 index.jade 與 layout.jade 樣板。（views 資料夾通常會包含應用程式的樣板，像是 index、error、layout....）
+在 login 資料夾內創建 views 資料夾，  
+並在 views 資料夾內放入 index.jade 與 layout.jade 樣板。  
+（views 資料夾通常會包含應用程式的樣板，像是 index、error、layout....）
 
 ## Step5
-在 cookie 資料夾內的 login.html 檔案程式碼如下。注意 action="/session/post" 會與提交後的動作有關！
+在 cookie 資料夾內的 login.html 檔案程式碼如下。  
+注意 action="/session/post" 會與提交後的動作有關！
 
 ```html
     <form action="/session/post" method="post">
-        Firstname: <input name="firstname" type="text"><br> Lastname: <input name="lastname" type="text"><br>
+        Firstname: <input name="firstname" type="text"><br>
+        Lastname: <input name="lastname" type="text"><br>
         <input type="submit" value="送出">
     </form>
 ```
 
 ## Step6
-在 views 資料夾內的 layout.jade 樣板程式碼如下。layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他頁面 extends 使用。
+在 views 資料夾內的 layout.jade 樣板程式碼如下。  
+layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他頁面 extends 使用。
 
 ```jade
     doctype html 
@@ -48,7 +56,8 @@
         block content
 ```
 
-接著是 index.jade 的樣板程式碼內容。注意 member 與 time 都是儲存在 cookie。
+接著是 index.jade 的樣板程式碼內容。  
+注意 member 與 time 都是儲存在 cookie。
 
 
 ```jade
@@ -66,7 +75,9 @@
 ```
 
 ## Step7
-接著在 login 資料夾內建立 index.js，這是我們的會執行的檔案。（index.js 與 package.json 內的 main 對應）以下是 index.js 的程式碼。
+接著在 login 資料夾內建立 index.js，這是我們的會執行的檔案。  
+（index.js 與 package.json 內的 main 對應）  
+以下是 index.js 的程式碼。
 
 ```JavaScript
     // 載入第三方模組
@@ -124,12 +135,12 @@
     app.set('views', __dirname + '/views');
 ```
 
-> 樣版引擎是幫助我們以最小的code 去新增一個Html Template。它可以在客戶端注入一些資料 (像是 JSON/XML) , Html Template，透過Template Engine 產生最後的HTML呈現至瀏覽器。
+> 樣版引擎是幫助我們以最小的code 去新增一個Html Template。它可以在客戶端注入一些資料 (像是 JSON/XML) , Html Template，透過Template Engine 產生最後的HTML呈現至瀏覽器。  
 > 來源：[Day19 - 樣版引擎及Jade 樣版引擎的安裝與使用](https://ithelp.ithome.com.tw/articles/10186637)
 
 2. [為何使用 body-parse](https://ithelp.ithome.com.tw/articles/10220836)
 
-> 提到 RESTful 幾個 Method，有些像是 POST、PATCH，是需要在 Request 時，一併送出 body 當作參數給 Server，並且可以在 headers，去設定 content-type 參數的類型....
+> 提到 RESTful 幾個 Method，有些像是 POST、PATCH，是需要在 Request 時，一併送出 body 當作參數給 Server，並且可以在 headers，去設定 content-type 參數的類型....  
 > 而 node 有許多這類型去解析 body 的套件，像是今天提到的 body-parser，透過這個插件可以解析 JSON、Raw、text、XML、URL-encoded 格式的請求。使用方法如下：先安裝 body-parser，並把程式碼加入到 .js 檔案中。
 
 ```
@@ -178,7 +189,8 @@
 ```
 
 ## Step8
-接著在 login 資料夾內建立 routes 資料夾，此 routes 資料夾內的檔案用來處理路由。接著在 routes 資料夾內建立 loginAPI.js 檔案。以下是 loginAPI.js 的程式碼。
+接著在 login 資料夾內建立 routes 資料夾，此 routes 資料夾內的檔案用來處理路由。  
+接著在 routes 資料夾內建立 loginAPI.js 檔案。以下是 loginAPI.js 的程式碼。
 
 ```JavaScript
     let express = require('express');
@@ -236,7 +248,7 @@
 
 1. [res.render](https://expressjs.com/zh-tw/4x/api.html#res.render) 
 
-> **res.render(view [, locals] [, callback])**
+> **res.render(view [, locals] [, callback])**  
 > Renders a view and sends the rendered HTML string to the client. Optional parameters:
 > * locals, an object whose properties define local variables for the view.
 > * callback, a callback function. If provided, the method returns both the possible error and rendered string, but does not perform an automated response. When an error occurs, the method invokes next(err) internally.
@@ -258,7 +270,7 @@
 
 2. [res.redirect](https://expressjs.com/zh-tw/4x/api.html#res.redirect) 
 
-> **res.redirect([ status,] path)**
+> **res.redirect([ status,] path)**  
 > Redirects to the URL derived from the specified path, with specified status, a positive integer that corresponds to an HTTP status code . If not specified, status defaults to “302 “Found”.
 
 ```JavaScript
@@ -275,3 +287,7 @@
     // the following would redirect to the URL http://example.com/admin..
     res.redirect('/admin');
 ```
+
+## 步驟與導向解析
+
+想釐清檔案與檔案間的步驟與順序，以及到底是怎麼導向與互相影響，把步驟寫在這邊。
