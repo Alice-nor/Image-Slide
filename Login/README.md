@@ -291,7 +291,7 @@ layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他�
 
 想釐清檔案與檔案間的步驟與順序，以及到底是怎麼導向與互相影響，因此把大步驟寫在這邊。
 
-1. 執行主要檔案。
+#### 1. 執行主要檔案。
 
 ```JavaScript
     node index.js // 終端機執行主要檔案
@@ -312,7 +312,7 @@ layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他�
     app.use('/cookie', routerCookie);
 ```
 
-2. 執行 loginAPI.api
+#### 2. 執行 loginAPI.api
 
 ![image](https://github.com/Alice-nor/front-endPratice/blob/main/Login/img/01.png)
 
@@ -351,7 +351,7 @@ title、member、logstatus 都帶進 index.jade 裡。
 所以印出 Hello guest 登入, Welcome to Express。
 
 
-3. 按下登入的連結
+#### 3. 按下登入的連結
 
 ![image](https://github.com/Alice-nor/front-endPratice/blob/main/Login/img/02.png)
 
@@ -365,7 +365,7 @@ title、member、logstatus 都帶進 index.jade 裡。
 所以這邊會出現 html 的畫面很好理解。  
 注意網址變成了 localhost:5000/cookie/login.html。  
 
-4. 填完資料，按下送出
+#### 4. 填完資料，按下送出
 
 ![image](https://github.com/Alice-nor/front-endPratice/blob/main/Login/img/03.png)
 
@@ -419,7 +419,7 @@ title、member、logstatus 都帶進 index.jade 裡。
 因 logstatus 為 true 未登入的狀態，  
 所以印出 Hello 名稱 登出, Welcome to Express
 
-5. 登出
+#### 5. 登出
 
 ![image](https://github.com/Alice-nor/front-endPratice/blob/main/Login/img/01.png)
 
