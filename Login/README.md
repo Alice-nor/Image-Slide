@@ -156,8 +156,10 @@ layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他�
     // 解析 application/json
     app.use(bodyParser.json());
     
-    // 加上這兩個解析方式已可應付大部分的需求
-    // 有需特別處理的再加上程式碼即可
+    /*
+        加上這兩個解析方式已可應付大部分的需求
+        有需特別處理的再加上程式碼即可
+    */
 ```
 
 3. [設定簽章](https://ithelp.ithome.com.tw/articles/10187343)
@@ -197,10 +199,13 @@ layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他�
 
     let isLogin = false;
 
-    // 進入需要驗證的頁面...
-    // 預設登入裝態都為 false 
-    // 如果接收到 cookie 都存在，則改變登入者姓名與狀態
-    // 若沒有登入則會導向 index.jade 樣板做呈現
+    /* 
+        進入需要驗證的頁面...
+        預設登入裝態都為 false 
+        如果接收到 cookie 都存在，則改變登入者姓名與狀態
+        若沒有登入則會導向 index.jade 樣板做呈現
+    */
+
     loginAPI.get('/', function(req, res) {
         let name = 'guest';
         isLogin = false; // 登入狀態
@@ -218,10 +223,12 @@ layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他�
     // 表單送出後...
     loginAPI.post('/post', function(req, res) {
 
-        // 若 fistname 或 lastname 有一個欄位沒有填寫
-        // 則跳回登入頁面，若都有填了就可以建立 cookie
-        // 使用簽章，cookie 的生存值為 100 分鐘
-        // 完成後導向 /cookie 進入驗證頁面
+        /*
+            若 fistname 或 lastname 有一個欄位沒有填寫
+            則跳回登入頁面，若都有填了就可以建立 cookie
+            使用簽章，cookie 的生存值為 100 分鐘
+            完成後導向 /cookie 進入驗證頁面
+        */
         if (req.body.firstname == '' || req.body.lastname == '') {
             return res.redirect('login.html');
         } else {
@@ -281,9 +288,11 @@ layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他�
     // Redirects can be a fully-qualified URL for redirecting to a different site:
     res.redirect('http://google.com');
 
-    // Redirects can be relative to the root of the host name.
-    // For example, if the application is on http://example.com/admin/post/new
-    // the following would redirect to the URL http://example.com/admin..
+    /*
+        Redirects can be relative to the root of the host name.
+        or example, if the application is on http://example.com/admin/post/new
+        the following would redirect to the URL http://example.com/admin..
+    */
     res.redirect('/admin');
 ```
 
@@ -304,10 +313,12 @@ layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他�
     // 靜態檔案則要找 public 資料夾內的檔案。
     app.use(express.static(__dirname + '/public'));
 
-    // 路由都交給 routerCookie 負責，路徑是 /cookie
-    // 因此輸入網址時是： localhost:5000/cookie
-    // 接著後續的導向都跟 routerCookie 相關
-    // 畫面呈現都跟 html 與 jade 檔有關
+    /*
+        路由都交給 routerCookie 負責，路徑是 /cookie
+        因此輸入網址時是： localhost:5000/cookie
+        接著後續的導向都跟 routerCookie 相關
+        畫面呈現都跟 html 與 jade 檔有關
+    */
     let routerCookie = require('./routes/loginAPI');
     app.use('/cookie', routerCookie);
 ```
@@ -322,27 +333,31 @@ layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他�
  接著來看看 loginAPI.js。  
 
  ```JavaScript
-    // 網址 localhost:5000/cookie
-    // 這邊的 loginAPI.get('/'......
-    // 讓輸入網址 localhost:5000/cookie 時會導向 localhost:5000/cookie/
-    // 但輸入 localhost:5000/cookie 也是可以的
-    // 因此一開始的畫面是 get 的方法呈現
-    // 那麼接著看 get 的方法
+    /*
+        網址 localhost:5000/cookie
+        這邊的 loginAPI.get('/'......
+        讓輸入網址 localhost:5000/cookie 時會導向 localhost:5000/cookie/
+        但輸入 localhost:5000/cookie 也是可以的
+        因此一開始的畫面是 get 的方法呈現
+        那麼接著看 get 的方法
+    */
     loginAPI.get('/', function(req, res) {
-    // .... 程式碼
+        // .... 程式碼
     });
 ```
 
 
  ```JavaScript
-    // 以下是在 loginAPI.get 的方法裡
-    // 通常進入一個網站會是登出的狀態，因此設定 isLogin 為 false
-    // 若是為登出的狀態會執行以下程式碼（已登入狀態下面會提到）
+    /*
+        以下是在 loginAPI.get 的方法裡
+        通常進入一個網站會是登出的狀態，因此設定 isLogin 為 false
+        若是為登出的狀態會執行以下程式碼（已登入狀態下面會提到）
 
-    // 因為在 index.js 已設定過樣板會去 views 裡找
-    // 所以這邊的 index 代表 views 資料夾內的 index.jade 檔案
-    // 大括弧內的內容為要傳遞過去的資料（呼應 index.jade 裡的資料）
-    // 那麼接著看 index.jade
+        因為在 index.js 已設定過樣板會去 views 裡找
+        所以這邊的 index 代表 views 資料夾內的 index.jade 檔案
+        大括弧內的內容為要傳遞過去的資料（呼應 index.jade 裡的資料）
+        那麼接著看 index.jade
+    */
     res.render('index', { title: 'Express', member: name, logstatus: isLogin });
 ```
 
@@ -387,9 +402,9 @@ title、member、logstatus 都帶進 index.jade 裡。
 ```
 ```JavaScript
     /* 
-    接著再看到 loginAPI.js，
-    我們有設定好 loginAPI.post('/post'....，
-    所以 localhost:5000/cookie/post 的呈現方式是依照 post 內的方法
+        接著再看到 loginAPI.js，
+        我們有設定好 loginAPI.post('/post'....，
+        所以 localhost:5000/cookie/post 的呈現方式是依照 post 內的方法
     */
     loginAPI.post('/post', function(req, res) {
         // 程式碼...
@@ -397,22 +412,26 @@ title、member、logstatus 都帶進 index.jade 裡。
 
 
 
-    // 以下是在 loginAPI.post 的方法裡
-    // 若有一個欄位沒有填資料，就會跳回到 login.html 讓你填表格
+    /*
+        以下是在 loginAPI.post 的方法裡
+        若有一個欄位沒有填資料，就會跳回到 login.html 讓你填表格
+    */
     if (req.body.firstname == '' || req.body.lastname == '') {
         return res.redirect('login.html');
     }
 
-    // 而如果我們早已乖乖的填完了資料
-    // 用 respose cookie 設定 firstname 與 lastname 內容
-    // 並導向 /cookie，也就是 localhost:5000/cookie
-    // 接著再回到 loginAPI.get.....
-    // 這時就有了 cookie 的資料了！因此會是登入的狀態，
-    // 並再把畫面導向 index.jade。
+    /*
+        而如果我們早已乖乖的填完了資料
+        用 respose cookie 設定 firstname 與 lastname 內容
+        並導向 /cookie，也就是 localhost:5000/cookie
+        接著再回到 loginAPI.get.....
+        這時就有了 cookie 的資料了！因此會是登入的狀態，
+        並再把畫面導向 index.jade。
 
-    // 看向 index.jade， logstatus 是 true 的登入狀態
-    // 所以換呈現下面這一行程式碼。
-    a(href='./logout') 登出
+        向 index.jade， logstatus 是 true 的登入狀態
+        所以換呈現下面這一行程式碼。
+        a(href='./logout') 登出
+    */
 ```
 
 一樣的 title、member、logstatus 都帶進 index.jade 裡。  
@@ -428,21 +447,25 @@ title、member、logstatus 都帶進 index.jade 裡。
 我們再回到 loginAPI.js 看 ./logout 路由會導向哪。
 
 ```JavaScript
-    // 處理路由的 loginAPI.js 裡確實有處理 ./logout
-    // 要注意他的位置，在 index.jade 的路由是 ./logout
-    // 在 loginAPI.js 則是 /logout
-    // 接著看登出時怎麼處理
+    /*
+        處理路由的 loginAPI.js 裡確實有處理 ./logout
+        要注意他的位置，在 index.jade 的路由是 ./logout
+        在 loginAPI.js 則是 /logout
+        接著看登出時怎麼處理
+    */
     loginAPI.get('./logout', function(req, res) {
         // 程式碼...
     });
 
 
-    // 以下是在 loginAPI.get('/logout...的方法裡
-    // 把 cookie 都移除掉之後，導向 /cookie
-    // 又回到了 loginAPI.get.....
-    // 因為 cookie 都被我們移除了，所以又回到了登出狀態
-    // 並把畫面導向 index.jade
-    // 如此這般就又回到步驟 1 了！
+    /*
+        以下是在 loginAPI.get('/logout...的方法裡
+        把 cookie 都移除掉之後，導向 /cookie
+        又回到了 loginAPI.get.....
+        因為 cookie 都被我們移除了，所以又回到了登出狀態
+        並把畫面導向 index.jade
+        如此這般就又回到步驟 1 了！
+    */
     res.clearCookie('firstname', { path: '/cookie' });
     res.clearCookie('lastname', { path: '/cookie' });
     return res.redirect('/cookie');
