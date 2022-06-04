@@ -1,4 +1,6 @@
 # preloader
- preloader pratice example
+ 練習如何使用HTML、CSS、JavaScript、jQuery製作出，進入網頁時會有icon轉圈的載入畫面。
 
-網址：https://alice-nor.github.io/front-endPratice/preloader/preloader.html
+**展示結果** 
+
+[preloader](https://alice-nor.github.io/front-endPratice/03-preloader/preloader.html)

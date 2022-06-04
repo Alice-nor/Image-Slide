@@ -325,7 +325,7 @@ layout.jade 通常會放入每個頁面都會需要的內容，接著讓其他�
 
 #### 2. 執行 loginAPI.api
 
-![image](https://github.com/Alice-nor/front-endPratice/blob/main/Login/img/01.png)
+![image](https://github.com/Alice-nor/front-endPratice/blob/main/05-Login/img/01.png)
 
  輸入網址後，此時的畫面如上圖。來理解一下為何是這樣畫面。  
  步驟 1 路由 /cookie 導向 routerCookie，  
@@ -368,7 +368,7 @@ title、member、logstatus 都帶進 index.jade 裡。
 
 #### 3. 按下登入的連結
 
-![image](https://github.com/Alice-nor/front-endPratice/blob/main/Login/img/02.png)
+![image](https://github.com/Alice-nor/front-endPratice/blob/main/05-Login/img/02.png)
 
 按下登入的連結後，此時的畫面如上圖。這是為什麼呢？  
 我們先看回到 index.jade，登入的畫面會連結到 login.html。  
@@ -382,9 +382,9 @@ title、member、logstatus 都帶進 index.jade 裡。
 
 #### 4. 填完資料，按下送出
 
-![image](https://github.com/Alice-nor/front-endPratice/blob/main/Login/img/03.png)
+![image](https://github.com/Alice-nor/front-endPratice/blob/main/05-Login/img/03.png)
 
-![image](https://github.com/Alice-nor/front-endPratice/blob/main/Login/img/04.png)
+![image](https://github.com/Alice-nor/front-endPratice/blob/main/05-Login/img/04.png)
 
 填完資料並按下送出後，此時的畫面會如上圖。  
 我們回到 login.html 的表單上。  
@@ -440,7 +440,7 @@ title、member、logstatus 都帶進 index.jade 裡。
 
 #### 5. 登出
 
-![image](https://github.com/Alice-nor/front-endPratice/blob/main/Login/img/01.png)
+![image](https://github.com/Alice-nor/front-endPratice/blob/main/05-Login/img/01.png)
 
 按下登出鍵後，又回到了上面的這個畫面。  
 這是因為 index.jade 裡的登出是連接到 ./logout。  

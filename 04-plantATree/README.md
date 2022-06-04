@@ -3,5 +3,5 @@
  
  效果：一些 animate 效果，以及點下按鈕後會種樹、並在幾秒後淡出的小動畫。
  
- 網址：https://alice-nor.github.io/front-endPratice/plantATree/animate.html
- 
+ **展示結果**
+ [plant A Tree](https://alice-nor.github.io/front-endPratice/04-plantATree/animate.html)
