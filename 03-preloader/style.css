@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    transition: .5s;
+    opacity: 1;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #E7E1C8;
+}
+
+.leftSide {
+    width: 5%;
+    background-color: #491B33;
+}
+
+.wrap {
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin: auto;
+    position: relative;
+}
+
+.txt h1 {
+    width: 100%;
+    position: absolute;
+    top: 4%;
+    font-size: 6vh;
+    color: #491B33;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.txt p {
+    width: 40%;
+    position: absolute;
+    left: 6%;
+    bottom: 8%;
+    font-family: cursive;
+    font-weight: 700;
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+.pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1300px;
+}
+
+.pic img {
+    width: 40%;
+}
+
+.pic img:first-child {
+    margin-left: 5%;
+}
+
+.pic img:last-child {
+    margin-top: 8%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+
+
+/* preloader */
+
+.loader_bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #491B33;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.loader {
+    width: 100px;
+    height: 100px;
+    color: whitesmoke;
+    top: 45%;
+    left: 45%;
+    position: absolute;
+    justify-content: center;
+    align-content: center;
+}
+
+.loader i {
+    font-size: 20vh;
+    animation: load 1.5s infinite;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes load {
+    50% {
+        transform: rotateZ(180deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+@media screen and (max-width:768px) {
+    .leftSide {
+        display: none;
+    }
+    .wrap {
+        display: block;
+        width: 100%;
+        /* border: 2px solid red; */
+    }
+    .txt h1 {
+        top: 2%;
+        position: static;
+    }
+    .txt p {
+        position: static;
+        width: 90%;
+        background-color: transparent;
+    }
+    .pic {
+        flex-direction: column;
+        width: 100%;
+    }
+    .pic img {
+        width: 100%;
+    }
+    .pic img:first-child {
+        margin-top: 0%;
+        margin-left: 0;
+    }
+    .pic img:last-child {
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-top: 2%;
+    }
+    .loader {
+        left: 37%;
+        top: 40%;
+    }
+}

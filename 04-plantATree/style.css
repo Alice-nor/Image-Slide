@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: 0;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2.2em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: darkolivegreen;
+    letter-spacing: 5px;
+}
+
+h2 {
+    font-size: 1em;
+    font-family: sans-serif;
+    font-weight: 500;
+    color: grey;
+    animation-delay: 1s;
+}
+
+#animation-container {
+    width: 60%;
+    height: 40%;
+    border: 8px double rgba(85, 107, 47, 0.5);
+    margin: 20px 0;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.fa-tree {
+    font-size: 3em;
+    position: absolute;
+}
+
+#animation-button {
+    padding: 1em 2em;
+    border: 0;
+    background-color: darkolivegreen;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 5px double transparent;
+    position: relative;
+}
+
+#animation-button i {
+    font-size: 1.3em;
+    color: whitesmoke;
+}
+
+.toolTip {
+    display: none;
+    width: 100%;
+    height: 50%;
+    background-color: rgba(85, 107, 47, 0.3);
+    color: black;
+    right: -130%;
+    bottom: 0;
+    padding: 5%;
+    position: absolute;
+}
+
+#animation-button:hover {
+    background-color: whitesmoke;
+    border: 5px double darkolivegreen;
+}
+
+#animation-button:hover i {
+    color: darkolivegreen;
+}
+
+#animation-button:hover .toolTip {
+    display: block;
+}
+
+.footer {
+    margin: 20px 0;
+    font-size: 1em;
+    font-weight: 400;
+    font-family: sans-serif;
+    color: grey;
+}
+
+.footer i {
+    margin: 0 10px;
+    font-size: 1em;
+}
+
+.fa-hand-pointer-o {
+    font-size: 3em;
+}
+
+.fa-code {
+    color: darkblue;
+    animation-delay: 1s;
+}
+
+.fa-heart {
+    color: brown;
+}
+
+@media (max-width:500px) {
+    #animation-container {
+        height: 50%;
+    }
+}

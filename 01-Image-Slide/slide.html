@@ -1,0 +1,98 @@
+<!-- 
+
+《Image Slider - 
+With Auto-play & Manual 
+Navigation Buttons - 
+Using CSS, HTML & Javascript》
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Into<br>the<br>dreams...</h1>
+    <!-- 幻燈片開始 -->
+    <div class="slider">
+        <div class="slides">
+            <!-- radio button 開始 -->
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+            <input type="radio" name="radio-btn" id="radio5">
+            <!-- radio button 結束 -->
+
+            <!-- 圖片幻燈片開始 -->
+            <div class="slide first">
+                <img src="img/1.jpg" alt="">
+            </div>
+
+            <div class="slide">
+                <img src="img/2.jpg" alt="">
+            </div>
+
+            <div class="slide">
+                <img src="img/3.jpg" alt="">
+            </div>
+
+            <div class="slide">
+                <img src="img/4.jpg" alt="">
+            </div>
+
+            <div class="slide">
+                <img src="img/5.jpg" alt="">
+            </div>
+            <!-- 圖片幻燈片結束 -->
+
+            <!-- 自動導引開始 -->
+            <div class="nav-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+                <div class="auto-btn4"></div>
+                <div class="auto-btn5"></div>
+            </div>
+            <!-- 自動導引結束 -->
+
+            <!-- 手動導引開始 -->
+            <div class="nav-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+                <label for="radio5" class="manual-btn"></label>
+            </div>
+            <!-- 手動導引結束 -->
+        </div>
+
+
+
+    </div>
+    <!-- 圖片幻燈片結束 -->
+
+    <script>
+        // 預設倒數器為1
+        let counter = 1;
+        // setInterval固定延遲某段時間之後
+        // 去執行對應的程式碼，然後「不斷循環」
+        setInterval(function() {
+            // 設定checked為true，代表第幾個選項被勾選了
+            document.getElementById('radio' + counter).checked = true
+            counter++;
+            if (counter > 5) {
+                // 若倒數器超過5，則跳回第一張照片
+                counter = 1;
+            }
+        }, 5000)
+    </script>
+</body>
+
+</html>
