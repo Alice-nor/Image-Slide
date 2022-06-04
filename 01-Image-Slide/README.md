@@ -3,7 +3,7 @@
  
  效果：照片會自動幾秒後變更一張，最後一張輪完會回到第一張，也可手動更改想看的圖片。  
  
- **展示結果** 
- [Image Slide](https://alice-nor.github.io/front-endPratice/01-Image-Slide/slide.html)
+ **展示結果**  
+ [網站：Image Slide](https://alice-nor.github.io/front-endPratice/01-Image-Slide/slide.html)
 
  ![image](https://github.com/Alice-nor/front-endPratice/blob/main/01-Image-Slide/repoImage.jpg)
