@@ -1,0 +1,93 @@
+.animation {
+    height: 100vh;
+    background: linear-gradient(180deg, #FFD782 0%, #4DC0C6 100%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+        
+        .name {
+            margin: 10px 0;
+        }
+        .job {
+            display: flex;
+            justify-content: center;
+    
+            svg {
+                padding: 0 5px;
+            }
+        }
+    }
+    
+}
+
+
+
+@keyframes fadeInside {
+    to {
+        stroke-dashoffset: 0px;
+    }
+}
+
+@keyframes fill {
+    from {
+        fill: transparent;
+    }
+
+    to {
+        fill: white;
+    }
+}
+
+@mixin animation($second) {
+    animation: fadeInside .6s ease-in forwards $second,fill 1s ease-in forwards 2.5s;
+
+}
+
+// 上排文字
+$SvgLength_top:(
+    0 : '624px',
+    1 : '324px',
+    2 : '322px',
+    3 : '375px',
+    4 : '441px',
+    5 : '464px',
+    6 : '322px',
+    7 : '448px'
+);
+
+// 下排文字
+$SvgLength_bottom:(
+    0 : '221px',
+    1 : '162px',
+    2 : '199px',
+    3 : '192px',
+    4 : '242px',
+    5 : '93px', 
+    6 : '192px',
+    7 : '192px',
+    8 : '199px',
+    9 : '188px' 
+);
+
+
+@each $svgNum, $svgLength in $SvgLength_top {
+    #svgTop-#{$svgNum} {
+        stroke-dasharray:#{$svgLength};
+        stroke-dashoffset:#{$svgLength};
+        @include animation($svgNum * 0.3s);
+    }
+}
+
+@each $svgNum, $svgLength in $SvgLength_bottom {
+    #svgBottom-#{$svgNum} {
+        stroke-dasharray:#{$svgLength};
+        stroke-dashoffset:#{$svgLength};
+        @include animation($svgNum * 0.2s);
+    }
+}
+
+
+
