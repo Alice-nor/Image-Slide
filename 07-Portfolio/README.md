@@ -1,5 +1,7 @@
 # Portfolio
- 練習 [2022網頁開發全攻略(HTML, CSS, JavaScript, React, SQL, Node, more)](https://www.udemy.com/course/html5-css3-z/) 中 Project3 的內容。雖然是做 portfolio，但我之前做過自己的網站了，所以這邊主要著重在練習一進入到網頁時，會有大標題的動畫效果。
+ 練習 [2022網頁開發全攻略(HTML, CSS, JavaScript, React, SQL, Node, more)](https://www.udemy.com/course/html5-css3-z/) 中 Project3 的內容。  
+ 雖然是做 portfolio，但我之前做過自己的網站了，  
+ 所以這邊主要著重在練習一進入到網頁時，會有大標題的動畫效果。
  
 
 ## Step 1:取得標題 svg
@@ -37,7 +39,6 @@
 id 名稱每個字都不一樣，class 名稱則要都一樣。  
 (若字與字之間要有空格，可在 svg 內加入 margin)
 
-* 我發現若是英文字且大小小不同，這樣的放法水平線會不一樣，擺起來就會歪七扭八，所以我捨棄下排的文字一個一個出現的特效，改為一次一起出現。
 
 ## Step 3:取得每個字的長度
 
@@ -118,7 +119,7 @@ lastWord.addEventListener('animationend', () => {
 })
 ```
 
-我才知道有 [https://www.runoob.com/jsref/event-animationend.html](animationend) 的監聽器！當動畫結束後就會直接觸發。
+我才知道有 [animationend](https://www.runoob.com/jsref/event-animationend.html) 的監聽器！當動畫結束後就會直接觸發。  
 不過要注意，監聽的對象確實有動畫效果，若沒有的話，此方法不會被觸發。
 
 ## 延伸：優化 SCSS
@@ -188,8 +189,10 @@ $SvgLength_bottom:(
 對 SCSS 不夠熟悉，中途遇到問題只好一直改方法，最後就成這樣了（搭拉），  
 雖然感覺還有辦法再更省略，但先這樣了。
 
-**展示結果**
+**展示結果**  
 [網站：Portfolio](https://alice-nor.github.io/front-endPratice/07-Portfolio/portfolio.html)
 
 figma 草稿內容：  
 ![image](https://github.com/Alice-nor/front-endPratice/blob/main/07-Portfolio/portfolio.gif)
+
+(小牢騷：不知道為什麼我從 figma 複製的英文字 svg 會這麼破碎？)
